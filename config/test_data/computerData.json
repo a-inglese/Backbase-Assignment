@@ -1,0 +1,46 @@
+{
+        "correct_creation": {
+            "name": "Test Computer Creation",
+            "introduced": "1995-10-12", 
+            "discontinued": "2000-12-03", 
+            "company": "IBM"
+        },
+        "computer_to_retrieve": {
+            "name": "Computer to Retrieve",
+            "introduced": "2005-08-11", 
+            "discontinued": "2008-10-03", 
+            "company": "Apple"
+        },
+        "name_with_special_chars": {
+            "name": "%&$!·$!%%&/",
+            "introduction": "1995-10-12", 
+            "discontinuation": "2000-12-03", 
+            "company": "IBM"
+        },
+        "very_long_input": {
+            "name": "VeryLongComputerNameThatCouldGenerateSomeProblemsInTheCreationOrInTheInputValidation",
+            "introduction": "1990-07-12", 
+            "discontinuation": "2002-06-03", 
+            "company": "Apple"
+        },
+        "invalid_date_format": {
+            "name": "justpassingby",
+            "introduction": "15-10-1999", 
+            "discontinuation": "2000-12-03", 
+            "company": "IBM"
+        },
+        "invalid_birth_date": {
+            "name": "notbornyet",
+            "introduction": "1995-10-12", 
+            "discontinuation": "2000-12-03", 
+            "company": "IBM"
+        },
+        "admin": {
+            "name": "admin",
+            "introduction": "1995-10-12", 
+            "discontinuation": "2000-12-03", 
+            "company": "IBM"
+        }  
+}
+
+

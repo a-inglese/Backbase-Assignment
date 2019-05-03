@@ -1,0 +1,36 @@
+{
+  "name": "backbase-assignment",
+  "version": "0.0.1",
+  "description": "Backbase Assignment proyect",
+  "authors": "Agustin Inglese <agustin.inglese@wearewaes.com>",
+  "main": "Gruntfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-protractor-runner": "^5.0.0",
+    "grunt-run": "^0.8.1",
+    "grunt-shell": "^3.0.1",
+    "jasmine-data-provider": "^2.2.0",
+    "jasmine-custom-message": "^0.8.2",
+    "jasmine-reporters": "^2.3.2",
+    "jasmine-pretty-html-reporter": "^0.2.5",
+    "jasmine-spec-reporter": "^2.7.0",
+    "jasmine2-custom-message": "^0.9.3",
+    "lodash": "^4.17.11",
+    "moment": "^2.23.0",
+    "protractor": "^5.4.2",
+    "protractor-beautiful-reporter": "^1.2.7",
+    "protractor-fail-fast": "^3.1.0",
+    "protractor-jasmine2-html-reporter": "^0.0.7",
+    "webdriver-manager": "^12.0.6",
+    "winston": "^2.3.0",
+    "winston-udp": "^0.0.7"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a-inglese/Backbase-Assignment/issues"
+  },
+  "homepage": "https://github.com/a-inglese/Backbase-Assignment#readme"
+}
