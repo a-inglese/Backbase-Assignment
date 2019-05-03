@@ -2,6 +2,7 @@ function FormPage () {
     this.titleAdd = 'Add a computer';
     this.titleEdit = 'Edit computer';
   
+    this.titleLocator = element(by.id('main')).$('h1');
     this.nameInput = element(by.id('name'));
     this.introducedDateInput = element(by.id('introduced'))
     this.discontinuedDateInput = element(by.id('discontinued'));
@@ -13,7 +14,10 @@ function FormPage () {
   
     // GETTERS //
   
-  
+    FormPage.prototype.getTitleElement = function(){
+      return this.titleLocator;
+    };
+
     FormPage.prototype.getTitleAdd = function(){
       return this.titleAdd;
     };

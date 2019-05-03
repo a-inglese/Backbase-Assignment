@@ -82,6 +82,7 @@ exports.config = {
     retrieve: 'specs/retrieveComputer.js',
     edit: 'specs/editComputer.js',
     delete: 'specs/deleteComputer.js',
+    edgeCases: 'specs/edgeCases.js'
   },
 
   // ---------------------------------------------------------------------------

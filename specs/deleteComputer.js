@@ -23,7 +23,7 @@ describe("Feature: As a User, I want to delete a computer previously created", f
         this.computerToDelete.name = computerData["computer_to_delete"].name + " " + moment().utcOffset(0).format('YYYY-MM-DD HH:mm:ss,SSS');
     });
 
-        describe('Scenario: Add a Computer', function() {
+        describe('Scenario: Delete a Computer', function() {
 
             it("Given I already created a computer", function () {
                 this.NavigationHelper.goToHomePage();

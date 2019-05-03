@@ -1,11 +1,11 @@
 var 
     homePage = require('../page_object/homePage'),
-    addPage = require('../page_object/addPage')
+    formPage = require('../page_object/formPage')
     pageObjectHelper = require('../helpers/pageObjectHelper')
 
 function NavigationHelper () {
   this.HomePage = new homePage();
-  this.AddPage = new addPage();
+  this.FormPage = new formPage();
   this.PageObjectHelper = new pageObjectHelper();
 }
   
@@ -29,16 +29,16 @@ function NavigationHelper () {
 
   NavigationHelper.prototype.createComputer = function(computer){
     this.HomePage.clickAddButton();
-    this.AddPage.setName(computer.name);
-    this.AddPage.setIntroducedDate(computer.introduced);
-    this.AddPage.setDiscontinuedDate(computer.discontinued);
-    this.AddPage.setCompany(computer.company);
-    this.AddPage.save();
+    this.FormPage.setName(computer.name);
+    this.FormPage.setIntroducedDate(computer.introduced);
+    this.FormPage.setDiscontinuedDate(computer.discontinued);
+    this.FormPage.setCompany(computer.company);
+    this.FormPage.save();
   }
 
   NavigationHelper.prototype.deleteComputer = function(computer){
     this.ResultsTable.selectComputer(computer);
-    this.EditPage.delete();
+    this.FormPage.delete();
   }
   
 module.exports = NavigationHelper;

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const moment = require('moment');
-var addPage = require('../page_object/addPage'),
+var formPage = require('../page_object/formPage'),
     pageObjectHelper = require('../helpers/pageObjectHelper')
     navigationHelper = require('../helpers/navigationHelper'),
     homePage = require('../page_object/homePage');
@@ -15,7 +15,7 @@ describe("Feature: As a User, I want to add a computer to the database from the 
         this.PageObjectHelper = new pageObjectHelper();
         this.NavigationHelper = new navigationHelper();
         this.HomePage = new homePage();        
-        this.AddPage = new addPage();
+        this.FormPage = new formPage();
         this.computerToRetrieve = computerData["correct_creation"];
         // add timestamp to computer name
         this.computerToRetrieve.name = computerData["correct_creation"].name + " " + moment().utcOffset(0).format('YYYY-MM-DD HH:mm:ss,SSS');
@@ -32,34 +32,34 @@ describe("Feature: As a User, I want to add a computer to the database from the 
             it("And I click on \"Add a new computer\" button", function () {
                 self = this;
                 this.HomePage.clickAddButton().then(function(){
-                    let title = self.AddPage.getTitleElement();
+                    let title = self.FormPage.getTitleElement();
                     self.NavigationHelper.waitForElement(title, 'Add page title not present. Are you on the correct page?');
                     expect(title.isPresent()).toBe(true);
                 });
             });
 
             it("And I input the name on the name field", function () {
-                this.AddPage.setName(computerData["correct_creation"].name);
-                expect(this.AddPage.getNameInput().getAttribute('value')).toBe(computerData["correct_creation"].name);
+                this.FormPage.setName(computerData["correct_creation"].name);
+                expect(this.FormPage.getNameInput().getAttribute('value')).toBe(computerData["correct_creation"].name);
             });
 
             it("And I input a date on the introduced date field", function () {
-                this.AddPage.setIntroducedDate(computerData["correct_creation"].introduced)
-                expect(this.AddPage.getIntroducedDateInput().getAttribute('value')).toBe(computerData["correct_creation"].introduced);
+                this.FormPage.setIntroducedDate(computerData["correct_creation"].introduced)
+                expect(this.FormPage.getIntroducedDateInput().getAttribute('value')).toBe(computerData["correct_creation"].introduced);
             });
 
             it("And I input a date on the discontinued date field", function () {
-                this.AddPage.setDiscontinuedDate(computerData["correct_creation"].discontinued);
-                expect(this.AddPage.getDiscontinuedDateInput().getAttribute('value')).toBe(computerData["correct_creation"].discontinued)
+                this.FormPage.setDiscontinuedDate(computerData["correct_creation"].discontinued);
+                expect(this.FormPage.getDiscontinuedDateInput().getAttribute('value')).toBe(computerData["correct_creation"].discontinued)
             });
 
             it("And I select a company", function () {
-                this.AddPage.setCompany(computerData["correct_creation"].company);
-                expect(this.AddPage.getCompanyInput().$('option:checked').getText()).toBe(computerData["correct_creation"].company)
+                this.FormPage.setCompany(computerData["correct_creation"].company);
+                expect(this.FormPage.getCompanyInput().$('option:checked').getText()).toBe(computerData["correct_creation"].company)
             });
 
             it("When I click on \"Create this computer\" button", function () {
-                this.AddPage.save();
+                this.FormPage.save();
             });
 
             it("Then I should be redirected to the home page", function () {

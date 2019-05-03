@@ -82,6 +82,16 @@ module.exports = function (grunt) {
           }
         }
       },
+      edgeCases: {
+        options: {
+          configFile: "conf.js",
+          directConnect: true,
+          args: {
+            suite: "edgeCases",
+            params: '<%= params %>'
+          }
+        }
+      },
     },
 
     shell: {
@@ -150,6 +160,11 @@ module.exports = function (grunt) {
   grunt.registerTask('edit', function (env) {
     setParams(env);
     grunt.task.run(['protractor:edit']);
+  });
+
+  grunt.registerTask('edgeCases', function (env) {
+    setParams(env);
+    grunt.task.run(['protractor:edgeCases']);
   });
 
   grunt.registerTask('all', function (env) {

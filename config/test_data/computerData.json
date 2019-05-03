@@ -30,17 +30,12 @@
             "discontinuation": "2000-12-03", 
             "company": "Nintendo"
         },
-        "very_long_input": {
-            "name": "VeryLongComputerNameThatCouldGenerateSomeProblemsInTheCreationOrInTheInputValidation",
-            "introduction": "1990-07-12", 
-            "discontinuation": "2002-06-03", 
-            "company": "Apple"
+        "very_long_name": {
+            "name": "VeryLongComputerNameThatCouldGenerateSomeProblemsInTheCreationOrInTheInputValidation"
         },
         "invalid_date_format": {
-            "name": "justpassingby",
-            "introduction": "15-10-1999", 
-            "discontinuation": "2000-12-03", 
-            "company": "IBM"
+            "introduced": "15-10-1999", 
+            "discontinued": "35-10-12-03"
         }
 }
 
