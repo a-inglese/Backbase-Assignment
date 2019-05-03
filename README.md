@@ -22,6 +22,7 @@ Test Cases and Automation for Backbase Assignment
     grunt retrieve
     grunt edit
     grunt delete
+    grunt edgeCases
     grunt all (runs all tests)
 
 ## Report Location
