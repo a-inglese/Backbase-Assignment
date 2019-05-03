@@ -1,7 +1,10 @@
 const fs = require('fs');
+const moment = require('moment');
 var pageObjectHelper = require('../helpers/pageObjectHelper')
     navigationHelper = require('../helpers/navigationHelper'),
     homePage = require('../page_object/homePage');
+    formPage = require('../page_object/formPage')
+    resultsTable = require('../page_object/resultsTable')
     computerData = JSON.parse(fs.readFileSync('config/test_data/computerData.json', 'utf8')),
 
 describe("Feature: As a User, I want to delete a computer previously created", function() {
@@ -13,10 +16,11 @@ describe("Feature: As a User, I want to delete a computer previously created", f
         this.PageObjectHelper = new pageObjectHelper();
         this.NavigationHelper = new navigationHelper();
         this.HomePage = new homePage();        
-        this.AddPage = new addPage();
-        this.computerToRetrieve = computerData["computer_to_delete"];
+        this.FormPage = new formPage();
+        this.ResultsTable = new resultsTable();
+        this.computerToDelete = computerData["computer_to_delete"];
         // add timestamp to computer name
-        this.computerToRetrieve.name = computerData["computer_to_delete"].name + " " + moment().utcOffset(0).format('YYYY-MM-DD HH:mm:ss,SSS');
+        this.computerToDelete.name = computerData["computer_to_delete"].name + " " + moment().utcOffset(0).format('YYYY-MM-DD HH:mm:ss,SSS');
     });
 
         describe('Scenario: Add a Computer', function() {
@@ -32,11 +36,11 @@ describe("Feature: As a User, I want to delete a computer previously created", f
             });
 
             it("And I select the computer to delete", function () {
-                this.ResultsTable.selectComputer(computerData["computer_to_delete"].name);
+                this.ResultsTable.selectComputerFromSearch();
             });
 
             it("When I click on delete button", function () {
-                this.EditPage.delete();
+                this.FormPage.delete();
             });
 
             it("Then I should be redirected to the home page", function () {
@@ -44,11 +48,11 @@ describe("Feature: As a User, I want to delete a computer previously created", f
             });
 
             it("And I should see that the number of computers listed is decreased", function () {   
-                expect(numberOfComputersAtStart).toBeLessThan(this.HomePage.getNumberOfComputersFound());          
+                expect(this.HomePage.getNumberOfComputersFound()).toBeLessThan(numberOfComputersAtStart);          
             });
 
-            it("And I should see that the computer is not retrieved if searched", function () {
-                this.HomePage.searchForComputer(this.computerToRetrieve.name);
+            it("And I should see that the computer is not retrieved if I search for it", function () {
+                this.HomePage.searchForComputer(this.computerToDelete.name);
                 expect(this.ResultsTable.getTableElement().isPresent()).toBe(false);          
             });
 

@@ -11,11 +11,24 @@
             "discontinued": "2008-10-03", 
             "company": "Apple"
         },
+        "computer_to_delete": {
+            "name": "Computer to Delete",
+            "introduced": "2002-10-01", 
+            "discontinued": "2012-05-15", 
+            "company": "Canon"
+        },
+        "computer_to_edit": {
+            "name": "Computer to Edit",
+            "newName": "Edited Computer",
+            "introduced": "1986-10-03", 
+            "discontinued": "1997-01-05", 
+            "company": "Atari"
+        },
         "name_with_special_chars": {
             "name": "%&$!·$!%%&/",
             "introduction": "1995-10-12", 
             "discontinuation": "2000-12-03", 
-            "company": "IBM"
+            "company": "Nintendo"
         },
         "very_long_input": {
             "name": "VeryLongComputerNameThatCouldGenerateSomeProblemsInTheCreationOrInTheInputValidation",
@@ -28,19 +41,7 @@
             "introduction": "15-10-1999", 
             "discontinuation": "2000-12-03", 
             "company": "IBM"
-        },
-        "invalid_birth_date": {
-            "name": "notbornyet",
-            "introduction": "1995-10-12", 
-            "discontinuation": "2000-12-03", 
-            "company": "IBM"
-        },
-        "admin": {
-            "name": "admin",
-            "introduction": "1995-10-12", 
-            "discontinuation": "2000-12-03", 
-            "company": "IBM"
-        }  
+        }
 }
 
 

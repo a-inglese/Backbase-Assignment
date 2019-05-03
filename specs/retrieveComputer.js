@@ -6,7 +6,7 @@ var pageObjectHelper = require('../helpers/pageObjectHelper')
     resultsTable = require('../page_object/resultsTable');
     computerData = JSON.parse(fs.readFileSync('config/test_data/computerData.json', 'utf8')),
 
-describe("Feature: As a User, I want to retrieve a computer previously created", function() {
+describe("Feature: As a User, I want to retrieve a computer previously created in the database through the Home Page", function() {
 
     beforeAll(function() {
         // Ignores synchronization with angular for non-angular page,

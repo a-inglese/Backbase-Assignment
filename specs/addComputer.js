@@ -1,4 +1,5 @@
 const fs = require('fs');
+const moment = require('moment');
 var addPage = require('../page_object/addPage'),
     pageObjectHelper = require('../helpers/pageObjectHelper')
     navigationHelper = require('../helpers/navigationHelper'),

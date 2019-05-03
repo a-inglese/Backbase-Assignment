@@ -32,32 +32,52 @@ module.exports = function (grunt) {
         configFile: "conf.js",
         directConnect: true
       },
-      wip: {
+      all: {
         options: {
           configFile: "conf.js",
           directConnect: true,
           args: {
-            suite: "wip",
+            suite: "all",
             params: '<%= params %>'
           }
         }
       },
-      testFrontend: {
+      add: {
         options: {
           configFile: "conf.js",
           directConnect: true,
           args: {
-            suite: ['wip'],
+            suite: "add",
             params: '<%= params %>'
           }
         }
       },
-      testFrontendHeadless: {
+      retrieve: {
         options: {
-          configFile: "conf-headless.js",
+          configFile: "conf.js",
           directConnect: true,
           args: {
-            suite: ['wip'],
+            suite: "retrieve",
+            params: '<%= params %>'
+          }
+        }
+      },
+      edit: {
+        options: {
+          configFile: "conf.js",
+          directConnect: true,
+          args: {
+            suite: "edit",
+            params: '<%= params %>'
+          }
+        }
+      },
+      delete: {
+        options: {
+          configFile: "conf.js",
+          directConnect: true,
+          args: {
+            suite: "delete",
             params: '<%= params %>'
           }
         }
@@ -95,8 +115,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('install', ['shell:install']);
   grunt.registerTask('update', ['shell:webdriver_update']);
-  grunt.registerTask('test-backend', ['shell:testBackend']);
-
 
   /// INDIVIDUAL TASKS ///
 
@@ -114,9 +132,29 @@ module.exports = function (grunt) {
       }
   });
 
-  grunt.registerTask('wip', function (env) {
+  grunt.registerTask('add', function (env) {
     setParams(env);
-    grunt.task.run(['protractor:wip']);
+    grunt.task.run(['protractor:add']);
+  });
+
+  grunt.registerTask('retrieve', function (env) {
+    setParams(env);
+    grunt.task.run(['protractor:retrieve']);
+  });
+
+  grunt.registerTask('delete', function (env) {
+    setParams(env);
+    grunt.task.run(['protractor:delete']);
+  });
+
+  grunt.registerTask('edit', function (env) {
+    setParams(env);
+    grunt.task.run(['protractor:edit']);
+  });
+
+  grunt.registerTask('all', function (env) {
+    setParams(env);
+    grunt.task.run(['protractor:all']);
   });
 
 };

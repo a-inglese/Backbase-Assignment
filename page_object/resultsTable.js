@@ -14,22 +14,9 @@ function ResultsTable () {
           })
     };
 
-    ResultsTable.prototype.selectComputer = function (computerName){
-        return $$('.computers.zebra-striped tr').filter(function(row) {
-            // Get the first column's text.
-            return row.$$('td').get(1).getText().then(function(rowName) {
-              // Filter rows matching the computer name
-              console.log(rowName)
-              return rowName === computerName;
-            });
-          }).then(function(rows) {
-            // This is an array. Find the button in the row and click on it.
-            rows[0].$('a').click();
-          });
+    ResultsTable.prototype.selectComputerFromSearch = function (computerName){
+        return $$('.computers.zebra-striped tbody').$$('tr').get(0).$('a').click()
     };
-
-    ResultsTable.prototype.selectComputer = function(computer){};
-
 
   
   }

@@ -1,11 +1,13 @@
-const fs = require('fs');
-var addPage = require('../page_object/addPage'),
+const fs = require('fs'),
+moment = require('moment');
+var formPage = require('../page_object/formPage'),
+    homePage = require('../page_object/homePage');
+    resultsTable = require('../page_object/resultsTable');
     pageObjectHelper = require('../helpers/pageObjectHelper')
     navigationHelper = require('../helpers/navigationHelper'),
-    homePage = require('../page_object/homePage');
     computerData = JSON.parse(fs.readFileSync('config/test_data/computerData.json', 'utf8')),
 
-describe("Feature: As a User, I want to add a computer to the database from the Home Page", function() {
+describe("Feature: As a User, I want to edit a computer from the database through the Home Page", function() {
 
     beforeAll(function() {
         // Ignores synchronization with angular for non-angular page,
@@ -14,44 +16,36 @@ describe("Feature: As a User, I want to add a computer to the database from the 
         this.PageObjectHelper = new pageObjectHelper();
         this.NavigationHelper = new navigationHelper();
         this.HomePage = new homePage();        
-        this.AddPage = new addPage();
+        this.FormPage = new formPage();
+        this.ResultsTable = new resultsTable();
         this.computerToEdit = computerData["computer_to_edit"];
         // add timestamp to computer name
         this.computerToEdit.name = computerData["computer_to_edit"].name + " " + moment().utcOffset(0).format('YYYY-MM-DD HH:mm:ss,SSS');
+        this.computerToEdit.newName = computerData["computer_to_edit"].newName + " " + moment().utcOffset(0).format('YYYY-MM-DD HH:mm:ss,SSS');
     });
 
-        describe('Scenario: Add a Computer', function() {
+        describe('Scenario: Edit a Computer', function() {
 
-            it("Given I navigate to Computers List homepage", function () {
-                this.NavigationHelper.goToHomePage();                
-                expect(browser.isElementPresent(this.HomePage.getComputersTable())).toBe(true);
+            it("Given I already created a computer", function () {
+                this.NavigationHelper.goToHomePage();
+                this.NavigationHelper.createComputer(this.computerToEdit)          
+            });
+
+            it("And I search for a previously created computer", function () {
+                this.HomePage.getNumberOfComputersFound().then(number => numberOfComputersAtStart = number);
+                this.HomePage.searchForComputer(this.computerToEdit.name);
             });
 
             it("And I select a computer to edit", function () {
+                this.ResultsTable.selectComputerFromSearch();
             });
 
             it("And I edit the name on the name field", function () {
-                this.AddPage.setName(computerData["correct_creation"].name);
-                expect(this.AddPage.getNameInput().getAttribute('value')).toBe(computerData["correct_creation"].name);
+                this.FormPage.setName(this.computerToEdit.newName);
             });
 
-            it("And I input a date on the introduced date field", function () {
-                this.AddPage.setIntroducedDate(computerData["correct_creation"].introduced)
-                expect(this.AddPage.getIntroducedDateInput().getAttribute('value')).toBe(computerData["correct_creation"].introduced);
-            });
-
-            it("And I input a date on the discontinued date field", function () {
-                this.AddPage.setDiscontinuedDate(computerData["correct_creation"].discontinued);
-                expect(this.AddPage.getDiscontinuedDateInput().getAttribute('value')).toBe(computerData["correct_creation"].discontinued)
-            });
-
-            it("And I select a company", function () {
-                this.AddPage.setCompany(computerData["correct_creation"].company);
-                expect(this.AddPage.getCompanyInput().$('option:checked').getText()).toBe(computerData["correct_creation"].company)
-            });
-
-            it("When I click on \"Create this computer\" button", function () {
-                this.AddPage.save();
+            it("When I click on \"Save this computer\" button", function () {
+                this.FormPage.save();
             });
 
             it("Then I should be redirected to the home page", function () {
@@ -60,17 +54,22 @@ describe("Feature: As a User, I want to add a computer to the database from the 
 
             it("And I should see an alert message notifying that the computer was created correctly", function () {
                 var alertMessageText = this.PageObjectHelper.getElementText(this.HomePage.getAlertMessage());
-                expect(alertMessageText).toContain(computerData["correct_creation"].name);        
+                expect(alertMessageText).toContain(this.computerToEdit.newName);        
             });
 
-            it("And I should see that the number of computers on the list is increased by 1", function () {   
-                expect(numberOfComputersAtStart).toBeLessThan(this.HomePage.getNumberOfComputersFound());        
+            it("And I should see that the number of computers on the database is the same as before editing", function () {   
+                expect(numberOfComputersAtStart).toBe(this.HomePage.getNumberOfComputersFound());        
             });
+
+            it("And I should be able to find the computer by its new name", function () {   
+                this.HomePage.searchForComputer(this.computerToEdit.newName);    
+            });
+
 
         });
 
     afterAll(function(){
-        this.NumberOfComputersAtStart = this.HomePage.getNumberOfComputersFound();
+        this.Resul;
     })
 
 });

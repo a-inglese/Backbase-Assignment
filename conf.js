@@ -78,7 +78,10 @@ exports.config = {
 
   suites: {
     all: 'specs/*.js',
-    wip: 'specs/retrieveComputer.js',
+    add: 'specs/addComputer.js',
+    retrieve: 'specs/retrieveComputer.js',
+    edit: 'specs/editComputer.js',
+    delete: 'specs/deleteComputer.js',
   },
 
   // ---------------------------------------------------------------------------
